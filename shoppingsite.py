@@ -73,25 +73,27 @@ def shopping_cart():
     #   - keep track of the total amt ordered for a melon-type
     #   - keep track of the total amt of the entire order
     # - hand to the template the total order cost and the list of melon types
+    
 
     return render_template("cart.html")
 
 
-@app.route("/add_to_cart/<int:id>")
-def add_to_cart(id):
+@app.route("/add_to_cart/<int:melon_id>")
+def add_to_cart(melon_id):
     """Add a melon to cart and redirect to shopping cart page.
 
     When a melon is added to the cart, redirect browser to the shopping cart
     page and display a confirmation message: 'Successfully added to cart'.
     """
 
-    # TODO: Finish shopping cart functionality
+    # TODO: Finish shopping cart functionality <int:id>
 
     # The logic here should be something like:
     #
     # - add the id of the melon they bought to the cart in the session
+    order_id = melons.get_by_id(melon_id)
 
-    return "Oops! This needs to be implemented!"
+    return render_template("cart.html", order=order_id)
 
 
 @app.route("/login", methods=["GET"])
